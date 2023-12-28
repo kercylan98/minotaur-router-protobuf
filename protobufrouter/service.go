@@ -3,6 +3,7 @@ package protobufrouter
 import (
 	"github.com/kercylan98/minotaur/server"
 	"github.com/kercylan98/minotaur/server/router"
+	"github.com/kercylan98/minotaur/utils/generic"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -64,7 +65,7 @@ func (s *Service[MessageID, Message, Entity]) OnConnectionReceivePacket(srv *ser
 	}
 
 	handler := s.Match(message)
-	if handler == nil {
+	if generic.IsNil(handler) {
 		return
 	}
 
