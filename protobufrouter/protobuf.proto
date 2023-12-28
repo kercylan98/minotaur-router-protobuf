@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package protobufrouter;
+option go_package = "../protobufrouter";
+// protoc --proto_path ./ --go_out=./ --go-grpc_out=./ ./*.proto
+
+enum MessageID {
+  MI_Heartbeat = 0; // 心跳
+}
+
+// 通用请求
+message Message {
+  MessageID id = 1;
+  bytes data = 2;
+}
